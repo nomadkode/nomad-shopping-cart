@@ -24,10 +24,28 @@ function App() {
     },
   ]);
 
+  // Delete Cart
+  const deleteCart = (id) => {
+    setCarts(carts.filter((cart) => cart.id !== id));
+  };
+
+  // Reminder Toggle Cart
+  const toggleReminder = (id) => {
+    setCarts(
+      carts.map((cart) =>
+        cart.id === id ? { ...cart, reminder: !cart.reminder } : cart
+      )
+    );
+  };
+
   return (
     <div className="container">
       <Header />
-      <Carts carts={carts} />
+      {carts.length > 0 ? (
+        <Carts carts={carts} onDelete={deleteCart} onToggle={toggleReminder} />
+      ) : (
+        'No Cart To Show'
+      )}
     </div>
   );
 }
