@@ -8,13 +8,13 @@ function App() {
       id: 1,
       text: 'Keyboard',
       day: 'Jan 1st at 1:00pm',
-      reminder: true,
+      reminder: false,
     },
     {
       id: 2,
       text: 'Mouse',
       day: 'Jan 2nd at 9:00am',
-      reminder: true,
+      reminder: false,
     },
     {
       id: 3,
