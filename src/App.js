@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Header from './components/Header';
 import Carts from './components/Carts';
+import Header from './components/Header';
 
-function App() {
+const App = () => {
   const [carts, setCarts] = useState([
     {
       id: 1,
@@ -24,12 +24,12 @@ function App() {
     },
   ]);
 
-  // Delete Cart
+  // Delete Cart Function
   const deleteCart = (id) => {
     setCarts(carts.filter((cart) => cart.id !== id));
   };
 
-  // Reminder Toggle Cart
+  // Reminder Toggle Cart Function
   const toggleReminder = (id) => {
     setCarts(
       carts.map((cart) =>
@@ -48,6 +48,6 @@ function App() {
       )}
     </div>
   );
-}
+};
 
 export default App;
