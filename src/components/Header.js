@@ -15,7 +15,7 @@ const Header = ({ title }) => {
 };
 
 Header.defaultProps = {
-  title: 'Cart Tracker App',
+  title: 'Shopping Cart App',
 };
 
 Header.propTypes = {

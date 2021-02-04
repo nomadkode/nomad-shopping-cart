@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Carts from './components/Carts';
 import Header from './components/Header';
+import AddCart from './components/AddCart';
 
 const App = () => {
   const [carts, setCarts] = useState([
@@ -41,6 +42,7 @@ const App = () => {
   return (
     <div className="container">
       <Header />
+      <AddCart />
       {carts.length > 0 ? (
         <Carts carts={carts} onDelete={deleteCart} onToggle={toggleReminder} />
       ) : (
