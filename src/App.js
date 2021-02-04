@@ -25,6 +25,14 @@ const App = () => {
     },
   ]);
 
+  // Add Cart Function
+  const addCart = (cart) => {
+    const id = Math.floor(Math.random() * 10000) + 1;
+
+    const newCart = { id, ...cart };
+    setCarts([...carts, newCart]);
+  };
+
   // Delete Cart Function
   const deleteCart = (id) => {
     setCarts(carts.filter((cart) => cart.id !== id));
@@ -42,7 +50,7 @@ const App = () => {
   return (
     <div className="container">
       <Header />
-      <AddCart />
+      <AddCart onAdd={addCart} />
       {carts.length > 0 ? (
         <Carts carts={carts} onDelete={deleteCart} onToggle={toggleReminder} />
       ) : (
