@@ -4,6 +4,8 @@ import Header from './components/Header';
 import AddCart from './components/AddCart';
 
 const App = () => {
+  const [showAddCart, setShowAddCart] = useState(false);
+
   const [carts, setCarts] = useState([
     {
       id: 1,
@@ -49,12 +51,15 @@ const App = () => {
 
   return (
     <div className="container">
-      <Header />
-      <AddCart onAdd={addCart} />
+      <Header
+        onAdd={() => setShowAddCart(!showAddCart)}
+        showAdd={showAddCart}
+      />
+      {showAddCart && <AddCart onAdd={addCart} />}
       {carts.length > 0 ? (
         <Carts carts={carts} onDelete={deleteCart} onToggle={toggleReminder} />
       ) : (
-        'No Cart To Show'
+        'No cart to show'
       )}
     </div>
   );
