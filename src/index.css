@@ -11,6 +11,8 @@ body {
 }
 
 .container {
+  background-color: #04005e;
+  color: white;
   max-width: 500px;
   margin: 30px auto;
   overflow: auto;
@@ -55,7 +57,7 @@ btn:active {
 }
 
 .cart {
-  background: #f4f4f4;
+  background: #00c2ba;
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
