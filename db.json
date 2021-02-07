@@ -1,0 +1,16 @@
+{
+  "carts": [
+    {
+      "id": 1,
+      "text": "Keyboard",
+      "day": "Jan 1st at 9:00am",
+      "reminder": "false"
+    },
+    {
+      "id": 2,
+      "text": "Mouse",
+      "day": "Jan 1st at 6:00pm",
+      "reminder": "false"
+    }
+  ]
+}

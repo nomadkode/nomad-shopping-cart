@@ -1,42 +1,55 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Carts from './components/Carts';
 import Header from './components/Header';
 import AddCart from './components/AddCart';
 
 const App = () => {
   const [showAddCart, setShowAddCart] = useState(false);
+  const [carts, setCarts] = useState([]);
 
-  const [carts, setCarts] = useState([
-    {
-      id: 1,
-      text: 'Keyboard',
-      day: 'Jan 1st at 1:00pm',
-      reminder: false,
-    },
-    {
-      id: 2,
-      text: 'Mouse',
-      day: 'Jan 2nd at 9:00am',
-      reminder: false,
-    },
-    {
-      id: 3,
-      text: 'Laptop',
-      day: 'Jan 2nd at 3:00pm',
-      reminder: false,
-    },
-  ]);
+  useEffect(() => {
+    const getCarts = async () => {
+      const cartsFromServer = await fetchCarts();
+      setCarts(cartsFromServer);
+    };
+
+    getCarts();
+  }, []);
+
+  // Fetch Carts
+  const fetchCarts = async () => {
+    const res = await fetch('http://localhost:5000/carts');
+    const data = await res.json();
+
+    return data;
+  };
 
   // Add Cart Function
-  const addCart = (cart) => {
-    const id = Math.floor(Math.random() * 10000) + 1;
+  const addCart = async (cart) => {
+    const res = await fetch('http://localhost:5000/carts', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(cart),
+    });
 
-    const newCart = { id, ...cart };
-    setCarts([...carts, newCart]);
+    const data = await res.json();
+
+    setCarts([...carts, data]);
+
+    // const id = Math.floor(Math.random() * 10000) + 1;
+
+    // const newCart = { id, ...cart };
+    // setCarts([...carts, newCart]);
   };
 
   // Delete Cart Function
-  const deleteCart = (id) => {
+  const deleteCart = async (id) => {
+    await fetch(`http://localhost:5000/carts/${id}`, {
+      method: 'DELETE',
+    });
+
     setCarts(carts.filter((cart) => cart.id !== id));
   };
 
