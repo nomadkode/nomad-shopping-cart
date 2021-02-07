@@ -24,6 +24,14 @@ const App = () => {
     return data;
   };
 
+  // Fetch Cart
+  const fetchCart = async (id) => {
+    const res = await fetch(`http://localhost:5000/carts/${id}`);
+    const data = await res.json();
+
+    return data;
+  };
+
   // Add Cart Function
   const addCart = async (cart) => {
     const res = await fetch('http://localhost:5000/carts', {
@@ -54,10 +62,23 @@ const App = () => {
   };
 
   // Reminder Toggle Cart Function
-  const toggleReminder = (id) => {
+  const toggleReminder = async (id) => {
+    const taskToToggle = await fetchCart(id);
+    const updateCart = { ...taskToToggle, reminder: !taskToToggle.reminder };
+
+    const res = await fetch(`http://localhost:5000/carts/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(updateCart),
+    });
+
+    const data = await res.json();
+
     setCarts(
       carts.map((cart) =>
-        cart.id === id ? { ...cart, reminder: !cart.reminder } : cart
+        cart.id === id ? { ...cart, reminder: data.reminder } : cart
       )
     );
   };
