@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
-import Carts from './components/Carts';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/Header';
+import About from './components/About';
+import Footer from './components/Footer';
+import Carts from './components/Carts';
 import AddCart from './components/AddCart';
 
 const App = () => {
@@ -84,18 +87,34 @@ const App = () => {
   };
 
   return (
-    <div className="container">
-      <Header
-        onAdd={() => setShowAddCart(!showAddCart)}
-        showAdd={showAddCart}
-      />
-      {showAddCart && <AddCart onAdd={addCart} />}
-      {carts.length > 0 ? (
-        <Carts carts={carts} onDelete={deleteCart} onToggle={toggleReminder} />
-      ) : (
-        'No cart to show'
-      )}
-    </div>
+    <Router>
+      <div className="container">
+        <Header
+          onAdd={() => setShowAddCart(!showAddCart)}
+          showAdd={showAddCart}
+        />
+        <Route
+          path="/"
+          exact
+          render={() => (
+            <>
+              {showAddCart && <AddCart onAdd={addCart} />}
+              {carts.length > 0 ? (
+                <Carts
+                  carts={carts}
+                  onDelete={deleteCart}
+                  onToggle={toggleReminder}
+                />
+              ) : (
+                'No cart to show'
+              )}
+            </>
+          )}
+        />
+        <Route path="/about" component={About} />
+        <Footer />
+      </div>
+    </Router>
   );
 };
 

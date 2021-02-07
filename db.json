@@ -1,22 +1,10 @@
 {
   "carts": [
     {
-      "id": 1,
-      "text": "Keyboard",
-      "day": "Jan 1st at 9:00am",
-      "reminder": true
-    },
-    {
-      "id": 2,
       "text": "Mouse",
-      "day": "Jan 1st at 6:00pm",
-      "reminder": true
-    },
-    {
-      "text": "Laptop",
-      "day": "Jan 2nd 7:00pm",
+      "day": "9:00 AM, Fri 1st Jan 2021",
       "reminder": true,
-      "id": 3
+      "id": 1
     }
   ]
 }
