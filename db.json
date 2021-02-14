@@ -5,6 +5,18 @@
       "day": "9:00 AM, Fri 1st Jan 2021",
       "reminder": true,
       "id": 1
+    },
+    {
+      "text": "Keyboard",
+      "day": "11:00 AM, Sat 2nd Jan 2021",
+      "reminder": true,
+      "id": 2
+    },
+    {
+      "text": "Running Shoes",
+      "day": "3:00 PM, Sun 3rd Jan 2021",
+      "reminder": true,
+      "id": 3
     }
   ]
 }

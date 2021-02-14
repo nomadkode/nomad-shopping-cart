@@ -20,7 +20,7 @@
 .env.production.local
 _cacache
 _locks
-
+_logs
 
 npm-debug.log*
 yarn-debug.log*
